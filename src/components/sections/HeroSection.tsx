@@ -47,7 +47,7 @@ const HeroSection = () => {
                 <Linkedin className="h-6 w-6" />
               </a>
               <a 
-                href="https://github.com" 
+                href="https://github.com/sivachandranice" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-white/70 hover:text-highlight transition-colors"
