@@ -66,10 +66,11 @@ const HeroSection = () => {
           <div className="lg:col-span-2 animate-fade-in order-first lg:order-last mb-6 lg:mb-0 flex justify-center">
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-highlight">
-                {/* Replace with actual image when available */}
-                <div className="w-full h-full bg-dark-card flex items-center justify-center text-white/50">
-                  Profile Photo
-                </div>
+                <img 
+                  src="https://i.postimg.cc/KY0cQZW2/1735342491943.jpg" 
+                  alt="Sivachandran Ariyaputhuri" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-4 -right-4 bg-dark-card glass-effect py-2 px-4 rounded-full">
                 <span className="text-highlight font-semibold">12+ Years Experience</span>
