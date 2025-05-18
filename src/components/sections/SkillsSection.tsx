@@ -10,12 +10,12 @@ const skillCategories = [
   {
     id: 2,
     category: "Frameworks",
-    skills: ["Struts", "Spring", "Spring Boot"]
+    skills: ["Struts", "Spring", "Spring Boot", "Camunda"]
   },
   {
     id: 3,
     category: "Databases",
-    skills: ["Oracle", "PostgreSQL", "MySQL"]
+    skills: ["Oracle", "PostgreSQL", "MySQL", "MongoDB"]
   },
   {
     id: 4,
