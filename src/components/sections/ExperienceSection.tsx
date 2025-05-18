@@ -8,20 +8,23 @@ const experiences = [
     id: 1,
     title: "Assistant Vice President",
     company: "OCBC",
+    location: "Singapore",
     period: "Apr 2024 – Present",
     description: "Currently serving as Assistant Vice President, focusing on financial technology solutions and process optimization."
   },
   {
     id: 2,
     title: "Senior Application Technologist",
-    company: "Modular Infotech Pte. Ltd., Singapore",
+    company: "Modular Infotech Pte. Ltd.",
+    location: "Singapore",
     period: "May 2022 – Apr 2024",
     description: "Led the development of enterprise applications using Java and AWS technologies. Designed scalable architectures and implemented best practices for application performance."
   },
   {
     id: 3,
     title: "Senior Application Consultant",
-    company: "Tata Consultancy Services Pt. Ltd., Singapore",
+    company: "Tata Consultancy Services Pt. Ltd.",
+    location: "India, Singapore",
     period: "Jan 2013 – May 2022",
     description: "Provided expert consultation on application development, testing, and business process improvement. Delivered full-cycle application development and implemented automation solutions for clients."
   }
@@ -47,7 +50,8 @@ const ExperienceSection = () => {
                 <Card className="w-full bg-dark-card border-dark-border">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold text-white mb-1">{experience.title}</h3>
-                    <h4 className="text-highlight font-medium mb-2">{experience.company}</h4>
+                    <h4 className="text-highlight font-medium mb-1">{experience.company}</h4>
+                    <p className="text-white/70 text-sm mb-2">{experience.location}</p>
                     <div className="flex items-center text-white/70 text-sm mb-4">
                       <Calendar className="h-4 w-4 mr-2" />
                       <span>{experience.period}</span>
