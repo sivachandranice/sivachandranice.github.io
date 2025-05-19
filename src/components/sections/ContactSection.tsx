@@ -26,7 +26,7 @@ const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // EmailJS integration
+    // EmailJS integration with proper template parameters
     emailjs.send(
       'service_yezr0m8',
       'template_oq8h708',
@@ -35,6 +35,7 @@ const ContactSection = () => {
         from_email: formData.email,
         subject: formData.subject,
         message: formData.message,
+        to_name: 'Sivachandran', // Adding recipient name for the template
       },
       'KtRGB8T4UOSDFeSKY'
     )
