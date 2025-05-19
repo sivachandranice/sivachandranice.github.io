@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, QrCode } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
@@ -18,8 +18,8 @@ const HeroSection = () => {
             </h2>
             
             <p className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl">
-              With over 12 years of expertise in product development, testing, and business process improvement. 
-              I'm passionate about delivering scalable and efficient solutions aligned with business goals.
+              Passionate about building, optimizing, and innovating—crafting high-performance solutions that align with business goals. 
+              From robust applications to cloud-native transformations, I thrive on delivering tech that makes an impact.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -43,6 +43,7 @@ const HeroSection = () => {
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-white/70 hover:text-highlight transition-colors"
+                aria-label="LinkedIn Profile"
               >
                 <Linkedin className="h-6 w-6" />
               </a>
@@ -51,14 +52,25 @@ const HeroSection = () => {
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="text-white/70 hover:text-highlight transition-colors"
+                aria-label="GitHub Profile"
               >
                 <Github className="h-6 w-6" />
               </a>
               <a 
                 href="mailto:sivachandranice@gmail.com" 
                 className="text-white/70 hover:text-highlight transition-colors"
+                aria-label="Email Me"
               >
                 <Mail className="h-6 w-6" />
+              </a>
+              <a 
+                href="https://community.aws/@sivachandranice" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-white/70 hover:text-highlight transition-colors"
+                aria-label="AWS Community Builder Profile"
+              >
+                <QrCode className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -72,8 +84,28 @@ const HeroSection = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
+              
+              {/* QR Code for AWS Community Builder profile */}
+              <div className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg">
+                <img 
+                  src="/lovable-uploads/69c46467-3d13-4800-8881-ff4bff2fb1a2.png" 
+                  alt="AWS Community Builder QR Code" 
+                  className="w-24 h-24"
+                />
+                <div className="text-center mt-1 text-xs text-black font-medium">
+                  AWS Profile
+                </div>
+              </div>
+              
               <div className="absolute -bottom-4 -right-4 bg-dark-card glass-effect py-2 px-4 rounded-full">
-                <span className="text-highlight font-semibold">12+ Years Experience</span>
+                <a 
+                  href="https://community.aws/@sivachandranice" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-highlight font-semibold hover:text-highlight/80"
+                >
+                  AWS Community Builder
+                </a>
               </div>
             </div>
           </div>

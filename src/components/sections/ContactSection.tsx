@@ -12,6 +12,7 @@ const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    subject: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,6 +33,7 @@ const ContactSection = () => {
       {
         from_name: formData.name,
         from_email: formData.email,
+        subject: formData.subject,
         message: formData.message,
       },
       'KtRGB8T4UOSDFeSKY'
@@ -46,6 +48,7 @@ const ContactSection = () => {
         setFormData({
           name: '',
           email: '',
+          subject: '',
           message: ''
         });
       })
@@ -148,6 +151,21 @@ const ContactSection = () => {
                   required
                   className="bg-dark-card border-dark-border text-white"
                   placeholder="your.email@example.com"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="subject" className="block text-sm font-medium text-white/80 mb-2">
+                  Subject
+                </label>
+                <Input
+                  id="subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="bg-dark-card border-dark-border text-white"
+                  placeholder="What's this about?"
                 />
               </div>
               
