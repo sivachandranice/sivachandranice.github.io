@@ -1,16 +1,16 @@
 
 import React from 'react';
-import { Github, Linkedin, Mail, QrCode, ArrowDown } from 'lucide-react';
+import { Github, Linkedin, Mail, QrCode } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-dark-bg pt-16">
+    <section id="home" className="min-h-screen flex items-center pt-0 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
         <motion.div 
-          className="absolute top-0 right-0 w-96 h-96 rounded-full bg-highlight/10 blur-[120px]"
+          className="absolute top-20 right-[10%] w-64 h-64 rounded-full bg-highlight/5 blur-3xl"
           animate={{ 
             scale: [1, 1.2, 1],
             opacity: [0.3, 0.5, 0.3]
@@ -22,7 +22,7 @@ const HeroSection = () => {
           }}
         />
         <motion.div 
-          className="absolute bottom-0 left-0 w-80 h-80 rounded-full bg-purple-500/10 blur-[100px]"
+          className="absolute bottom-20 left-[15%] w-72 h-72 rounded-full bg-highlight/10 blur-3xl"
           animate={{ 
             scale: [1, 1.3, 1],
             opacity: [0.2, 0.4, 0.2]
@@ -36,89 +36,85 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="container mx-auto z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative">
-          {/* Left Side - Content */}
-          <div className="lg:col-span-7 z-20">
-            {/* The "DevTitle" banner similar to the Dribbble reference */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-block px-6 py-2 mb-6 bg-highlight/10 border border-highlight/20 rounded-full"
-            >
-              <span className="text-highlight uppercase text-sm font-medium tracking-wider">Java Developer</span>
-            </motion.div>
-            
-            {/* Main Heading with highlighted text */}
-            <motion.h1 
-              className="text-5xl md:text-7xl font-bold leading-tight mb-6"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Hi, I'm <span className="text-highlight">Sivachandran</span>, Java Developer & AWS Builder
-            </motion.h1>
-            
-            <motion.p 
-              className="text-lg text-white/70 font-light mb-8 max-w-xl"
+      <div className="container z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <motion.div 
+            className="lg:col-span-7"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="inline-block mb-3 py-1 px-3 rounded-full bg-highlight/10 text-highlight text-sm font-medium"
             >
-              Experienced Java Developer with 12+ years creating robust applications
-              and a passion for cloud technologies as an AWS Community Builder.
-            </motion.p>
-
-            {/* CTA Buttons */}
-            <motion.div 
-              className="flex gap-4 mb-12"
+              AWS Community Builder
+            </motion.div>
+            
+            <motion.h1 
+              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+            >
+              Hi, I'm <span className="text-gradient">Sivachandran</span>
+            </motion.h1>
+            
+            <motion.h2 
+              className="text-2xl md:text-3xl text-highlight font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.7 }}
+            >
+              Java Developer & AWS Community Builder
+            </motion.h2>
+            
+            <motion.p 
+              className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.9 }}
+            >
+              Passionate about building, optimizing, and innovating—crafting high-performance solutions that align with business goals. 
+              From robust applications to cloud-native transformations, I thrive on delivering tech that makes an impact.
+            </motion.p>
+
+            <motion.div 
+              className="flex flex-wrap gap-4 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 1.1 }}
             >
               <Button 
-                className="bg-highlight hover:bg-highlight/80 text-black font-medium px-8 py-6"
-                size="lg"
+                size="lg" 
+                className="bg-highlight hover:bg-highlight/90 text-white relative overflow-hidden group"
               >
-                My Projects
+                <span className="absolute inset-0 w-full h-full bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+                <a href="#contact" className="flex items-center gap-2 relative z-10">
+                  <Mail className="h-4 w-4" />
+                  Contact Me
+                </a>
               </Button>
+              
               <Button 
-                variant="outline"
-                className="border-white/20 hover:bg-white/5 px-8 py-6"
-                size="lg"
+                variant="outline" 
+                size="lg" 
+                className="border-white/20 hover:bg-white/5 relative overflow-hidden group"
               >
-                Contact Me
+                <span className="absolute inset-0 w-full h-full bg-white/5 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+                <a href="#about" className="flex items-center gap-2 relative z-10">
+                  Learn More
+                </a>
               </Button>
             </motion.div>
             
-            {/* Stats Section */}
-            <motion.div 
-              className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12 max-w-xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.7 }}
-            >
-              <div className="border-l-2 border-highlight pl-4">
-                <h3 className="text-4xl font-bold text-white mb-1">12+</h3>
-                <p className="text-white/60 text-sm">Years Experience</p>
-              </div>
-              <div className="border-l-2 border-highlight pl-4">
-                <h3 className="text-4xl font-bold text-white mb-1">30+</h3>
-                <p className="text-white/60 text-sm">Projects Done</p>
-              </div>
-              <div className="border-l-2 border-highlight pl-4">
-                <h3 className="text-4xl font-bold text-white mb-1">AWS</h3>
-                <p className="text-white/60 text-sm">Community Builder</p>
-              </div>
-            </motion.div>
-
-            {/* Social links */}
             <motion.div 
               className="flex gap-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.9 }}
+              transition={{ duration: 0.5, delay: 1.3 }}
             >
               {[
                 { 
@@ -151,133 +147,108 @@ const HeroSection = () => {
                   href={social.href} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-white/70 hover:text-highlight hover:bg-white/10 transition-colors border border-white/10 relative group"
+                  className="text-white/70 hover:text-highlight transition-colors relative group"
                   aria-label={social.label}
-                  whileHover={{ scale: 1.1, y: -5 }}
+                  whileHover={{ scale: 1.1 }}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.0 + social.delay }}
+                  transition={{ delay: 1.3 + social.delay }}
                 >
-                  <social.icon className="h-5 w-5" />
+                  <social.icon className="h-6 w-6" />
                   <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs bg-dark-card rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
                     {social.label}
                   </span>
                 </motion.a>
               ))}
             </motion.div>
-            
-            {/* Scroll Down */}
-            <motion.div
-              className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center lg:left-8 lg:bottom-8 lg:transform-none"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.4, duration: 0.6 }}
-            >
-              <motion.div
-                animate={{ 
-                  y: [0, 5, 0],
-                }}
-                transition={{ 
-                  duration: 1.5, 
-                  repeat: Infinity,
-                  repeatType: "loop",
-                }}
-                className="p-3 rounded-full bg-white/5 border border-white/10"
-              >
-                <ArrowDown className="h-5 w-5 text-highlight" />
-              </motion.div>
-              <span className="text-white/60 text-sm mt-2">Scroll down</span>
-            </motion.div>
-          </div>
+          </motion.div>
           
-          {/* Right Side - Image with MacBook frame */}
           <motion.div 
-            className="lg:col-span-5 z-10 perspective-1000"
+            className="lg:col-span-5 order-first lg:order-last"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.div 
-              className="relative w-full h-auto"
-              whileHover={{ 
-                rotateY: -5,
-                rotateX: 5,
-                transition: { type: "spring", stiffness: 100 }
-              }}
-            >
-              {/* MacBook Frame with 3D effect */}
-              <div className="relative w-full h-auto">
-                {/* MacBook Body */}
-                <div className="relative p-4 pt-6 pb-10 bg-gradient-to-b from-[#9F9EA1] to-[#8A898C] rounded-xl shadow-2xl overflow-hidden">
-                  {/* Screen Bezel */}
-                  <div className="relative rounded-lg bg-[#222222] p-1.5 shadow-inner">
-                    {/* Screen Content */}
-                    <div className="relative overflow-hidden rounded-md aspect-ratio-16/9 bg-gradient-to-br from-highlight/30 to-purple-500/30">
-                      <img 
-                        src="https://i.postimg.cc/KY0cQZW2/1735342491943.jpg" 
-                        alt="Sivachandran Ariyaputhuri" 
-                        className="w-full h-full rounded-md object-cover"
-                      />
-                      {/* Screen reflection overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
-                    </div>
-                  </div>
-                  
-                  {/* MacBook Bottom with details */}
-                  <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-r from-[#8A898C] via-[#9F9EA1] to-[#8A898C]">
-                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-8 h-1 rounded-full bg-[#777]"></div>
-                    <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-orange-500/70 animate-pulse"></div>
-                  </div>
+            <div className="relative">
+              {/* Animated rings around the profile image */}
+              <motion.div 
+                className="absolute inset-0 border-4 border-highlight/20 rounded-full"
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                  opacity: [0.5, 0.8, 0.5]
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }}
+              />
+              <motion.div 
+                className="absolute -inset-3 border-2 border-highlight/10 rounded-full"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ 
+                  duration: 4,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  delay: 0.5
+                }}
+              />
+              
+              {/* Profile Image */}
+              <motion.div 
+                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-highlight relative z-10"
+                whileHover={{ scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <img 
+                  src="https://i.postimg.cc/KY0cQZW2/1735342491943.jpg" 
+                  alt="Sivachandran Ariyaputhuri" 
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+              
+              {/* QR Code */}
+              <motion.div 
+                className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 1.2, duration: 0.5 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}
+              >
+                <img 
+                  src="/lovable-uploads/69c46467-3d13-4800-8881-ff4bff2fb1a2.png" 
+                  alt="AWS Community Builder QR Code" 
+                  className="w-24 h-24"
+                />
+                <div className="text-center mt-1 text-xs text-black font-medium">
+                  AWS Profile
                 </div>
-
-                {/* MacBook Reflection */}
-                <div className="absolute -bottom-6 left-6 right-6 h-8 bg-highlight/5 blur-md rounded-[100%]"></div>
-              </div>
+              </motion.div>
               
               {/* AWS Badge */}
               <motion.div 
-                className="absolute -bottom-4 -right-4 bg-dark-card glass-effect py-2 px-5 rounded-full shadow-lg"
+                className="absolute -bottom-4 -right-4 bg-dark-card glass-effect py-2 px-4 rounded-full shadow-lg"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2, duration: 0.5 }}
-                whileHover={{ scale: 1.05, y: -3 }}
+                transition={{ delay: 1.4, duration: 0.5 }}
+                whileHover={{ scale: 1.05 }}
               >
                 <a 
                   href="https://community.aws/@sivachandranice" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-highlight font-medium hover:text-highlight/80 flex items-center gap-1.5"
+                  className="text-highlight font-semibold hover:text-highlight/80"
                 >
-                  <span className="w-2 h-2 bg-highlight rounded-full animate-pulse"></span>
                   AWS Community Builder
                 </a>
               </motion.div>
-
-              {/* Floating UI elements */}
-              <motion.div
-                className="absolute -top-5 -right-5 px-4 py-2 bg-white/5 backdrop-blur-lg rounded-lg border border-white/10 shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.0, duration: 0.6 }}
-                whileHover={{ y: -3 }}
-                drag
-                dragConstraints={{ top: -10, right: 10, bottom: 10, left: -10 }}
-              >
-                <p className="text-white text-sm font-medium">Java Expert</p>
-              </motion.div>
-
-              <motion.div
-                className="absolute -bottom-3 -left-3 px-3 py-1.5 bg-purple-500/10 backdrop-blur-lg rounded-lg border border-purple-500/20 shadow-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.1, duration: 0.6 }}
-                whileHover={{ y: -3 }}
-                drag
-                dragConstraints={{ top: -10, right: 10, bottom: 10, left: -10 }}
-              >
-                <p className="text-white/90 text-xs font-medium">12+ Years</p>
-              </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </div>
