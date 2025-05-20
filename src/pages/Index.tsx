@@ -10,7 +10,7 @@ import ProjectsSection from '@/components/sections/ProjectsSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 const Index = () => {
-  // Smooth scrolling effect for anchor links
+  // Enhanced smooth scrolling effect for anchor links with offset
   useEffect(() => {
     const handleAnchorClick = (e) => {
       const target = e.target;
@@ -19,7 +19,15 @@ const Index = () => {
         const element = document.querySelector(id);
         if (element) {
           e.preventDefault();
-          element.scrollIntoView({
+          
+          // Get the height of the navbar (assuming 80px, adjust if different)
+          const navbarHeight = 80;
+          
+          // Calculate the position with offset
+          const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+          
+          window.scrollTo({
+            top: offsetTop,
             behavior: 'smooth'
           });
         }
@@ -28,6 +36,29 @@ const Index = () => {
 
     document.addEventListener('click', handleAnchorClick);
     return () => document.removeEventListener('click', handleAnchorClick);
+  }, []);
+
+  // Add intersection observer to detect when sections are visible
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-fade-in');
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(section => {
+      section.classList.add('opacity-0');
+      observer.observe(section);
+    });
+
+    return () => {
+      document.querySelectorAll('section').forEach(section => {
+        observer.unobserve(section);
+      });
+    };
   }, []);
 
   return (

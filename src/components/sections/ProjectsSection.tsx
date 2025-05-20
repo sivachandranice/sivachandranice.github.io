@@ -80,13 +80,14 @@ const achievements = [
   }
 ];
 
-// Animation variants for elements
+// Enhanced animation variants for elements
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15
+      staggerChildren: 0.15,
+      delayChildren: 0.2
     }
   }
 };
@@ -96,18 +97,45 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
+    transition: { 
+      duration: 0.6, 
+      ease: [0.22, 1, 0.36, 1] // Custom ease curve for more elegant motion
+    }
   }
 };
 
-// Floating animation for icons
+// Enhanced floating animation for icons
 const floatingIconVariants = {
   animate: {
     y: [0, -5, 0],
+    scale: [1, 1.1, 1],
     transition: {
       duration: 3,
       repeat: Infinity,
       repeatType: "mirror",
+      ease: "easeInOut"
+    }
+  }
+};
+
+const headingVariants = {
+  hidden: { opacity: 0, y: -20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
+  }
+};
+
+const lineVariants = {
+  hidden: { width: 0 },
+  visible: {
+    width: "100%",
+    transition: {
+      duration: 1.5,
       ease: "easeInOut"
     }
   }
@@ -126,7 +154,7 @@ const ProjectsSection = () => {
 
   return (
     <section id="projects" className="py-20 relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Enhanced animated background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-dark-bg to-black/60 z-0" />
       
       <motion.div 
@@ -134,6 +162,7 @@ const ProjectsSection = () => {
         animate={{ 
           scale: [1, 1.2, 1],
           opacity: [0.2, 0.4, 0.2],
+          x: [0, 20, 0],
         }}
         transition={{ duration: 12, repeat: Infinity, repeatType: "reverse" }}
       />
@@ -143,39 +172,47 @@ const ProjectsSection = () => {
         animate={{ 
           scale: [1, 1.3, 1],
           opacity: [0.15, 0.3, 0.15],
+          y: [0, -20, 0],
         }}
         transition={{ duration: 10, delay: 2, repeat: Infinity, repeatType: "reverse" }}
+      />
+
+      {/* Add more dynamic background elements */}
+      <motion.div 
+        className="absolute top-1/3 left-1/3 w-40 h-40 rounded-full bg-highlight/5 blur-2xl"
+        animate={{ 
+          scale: [1, 1.4, 1],
+          opacity: [0.1, 0.2, 0.1],
+        }}
+        transition={{ duration: 15, repeat: Infinity, repeatType: "reverse", delay: 3 }}
       />
 
       <div className="container px-4 mx-auto relative z-10">
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          variants={headingVariants}
         >
           <motion.div
-            initial={{ width: "0%" }}
-            whileInView={{ width: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeInOut" }}
+            variants={lineVariants}
             className="h-px bg-gradient-to-r from-transparent via-highlight/50 to-transparent mx-auto mb-6 max-w-[100px]"
           />
           
           <h2 className="section-heading mb-4 text-center inline-block">Achievements & Recognition</h2>
           
           <motion.div
-            initial={{ width: "0%" }}
-            whileInView={{ width: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
+            variants={lineVariants}
             className="h-px bg-gradient-to-r from-transparent via-highlight/50 to-transparent mx-auto mb-6 max-w-[100px]"
           />
           
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <motion.p 
+            className="text-gray-400 max-w-2xl mx-auto"
+            variants={itemVariants}
+          >
             A track record of excellence and innovation recognized by industry leaders and organizations.
-          </p>
+          </motion.p>
         </motion.div>
         
         <motion.div 
@@ -187,50 +224,92 @@ const ProjectsSection = () => {
         >
           {achievements.map((achievement) => (
             <motion.div key={achievement.id} variants={itemVariants}>
-              <Card 
-                className="bg-dark-card/80 backdrop-blur-sm border-dark-border hover:border-highlight transition-all duration-500 h-full overflow-hidden group"
+              <motion.div
+                whileHover={{ 
+                  y: -10,
+                  transition: { duration: 0.3 }
+                }}
               >
-                <CardContent className="p-6 flex flex-col h-full relative">
-                  {/* Glowing effect on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-highlight/0 to-highlight/0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10" />
-                  
-                  {/* Category badge */}
-                  <Badge className="absolute top-2 right-2 bg-highlight/20 text-highlight border-none">
-                    {achievement.category}
-                  </Badge>
-                  
-                  <div className="flex items-start gap-4">
+                <Card 
+                  className="bg-dark-card/80 backdrop-blur-sm border-dark-border hover:border-highlight transition-all duration-500 h-full overflow-hidden group"
+                >
+                  <CardContent className="p-6 flex flex-col h-full relative">
+                    {/* Enhanced glowing effect on hover */}
                     <motion.div 
-                      className="w-12 h-12 rounded-full bg-highlight/10 flex items-center justify-center flex-shrink-0 group-hover:bg-highlight/20 transition-all duration-500"
-                      variants={floatingIconVariants}
-                      animate="animate"
+                      className="absolute inset-0 bg-gradient-to-tr from-highlight/0 to-highlight/0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10"
+                      animate={{
+                        background: ["linear-gradient(to top right, rgba(245, 158, 11, 0), rgba(245, 158, 11, 0))", 
+                                    "linear-gradient(to top right, rgba(245, 158, 11, 0.05), rgba(245, 158, 11, 0.2))",
+                                    "linear-gradient(to top right, rgba(245, 158, 11, 0), rgba(245, 158, 11, 0))"],
+                      }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatType: "reverse"
+                      }}
+                    />
+                    
+                    {/* Category badge with enhanced animation */}
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.3, duration: 0.5 }}
                     >
-                      <achievement.icon className="h-6 w-6 text-highlight" />
+                      <Badge className="absolute top-2 right-2 bg-highlight/20 text-highlight border-none">
+                        {achievement.category}
+                      </Badge>
                     </motion.div>
                     
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-highlight transition-colors duration-300">
-                        {achievement.title}
-                      </h3>
+                    <div className="flex items-start gap-4">
+                      <motion.div 
+                        className="w-12 h-12 rounded-full bg-highlight/10 flex items-center justify-center flex-shrink-0 group-hover:bg-highlight/20 transition-all duration-500"
+                        variants={floatingIconVariants}
+                        animate="animate"
+                      >
+                        <achievement.icon className="h-6 w-6 text-highlight" />
+                      </motion.div>
                       
-                      <p className="text-white/70 mb-4">{achievement.description}</p>
-                      
-                      <div className="mt-auto flex flex-col pt-3 border-t border-white/10">
-                        {achievement.organization && (
-                          <span className="text-sm font-medium text-highlight/90">
-                            {achievement.organization}
-                          </span>
-                        )}
-                        {achievement.date && (
-                          <span className="text-xs text-white/50 mt-1">
-                            {achievement.date}
-                          </span>
-                        )}
+                      <div>
+                        <motion.h3 
+                          className="text-xl font-bold text-white mb-2 group-hover:text-highlight transition-colors duration-300"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.2, duration: 0.5 }}
+                        >
+                          {achievement.title}
+                        </motion.h3>
+                        
+                        <motion.p 
+                          className="text-white/70 mb-4"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.3, duration: 0.5 }}
+                        >
+                          {achievement.description}
+                        </motion.p>
+                        
+                        <motion.div 
+                          className="mt-auto flex flex-col pt-3 border-t border-white/10"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.4, duration: 0.5 }}
+                        >
+                          {achievement.organization && (
+                            <span className="text-sm font-medium text-highlight/90">
+                              {achievement.organization}
+                            </span>
+                          )}
+                          {achievement.date && (
+                            <span className="text-xs text-white/50 mt-1">
+                              {achievement.date}
+                            </span>
+                          )}
+                        </motion.div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </motion.div>
           ))}
         </motion.div>
