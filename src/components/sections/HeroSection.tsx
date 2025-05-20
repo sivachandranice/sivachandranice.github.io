@@ -1,12 +1,12 @@
 
 import React from 'react';
-import { Github, Linkedin, Mail, QrCode } from 'lucide-react';
+import { Github, Linkedin, Mail, QrCode, ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center pt-0 relative overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-dark-bg pt-16">
       {/* Background elements */}
       <div className="absolute inset-0 z-0">
         <motion.div 
@@ -36,82 +36,91 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="container z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <motion.div 
-            className="lg:col-span-7"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+      <div className="container mx-auto z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative">
+          {/* Left Side - Content */}
+          <div className="lg:col-span-7 z-20">
+            {/* Vertical "Product Designer" text */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="inline-block mb-3 py-1 px-3 rounded-full bg-highlight/10 text-highlight text-sm font-medium"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="hidden lg:block absolute left-0 top-1/2 -translate-y-1/2 -ml-12 transform -rotate-90 origin-center"
             >
-              AWS Community Builder
+              <span className="text-white/60 tracking-widest uppercase text-sm font-light">Java Developer</span>
             </motion.div>
-            
-            <motion.h1 
-              className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6"
+
+            {/* Stats Section */}
+            <motion.div 
+              className="flex mb-16 space-x-16"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
             >
-              Hi, I'm <span className="text-gradient">Sivachandran</span>
+              <div>
+                <motion.h3 
+                  className="text-5xl font-light text-white"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 }}
+                >
+                  +12
+                </motion.h3>
+                <motion.p 
+                  className="text-white/60 text-sm mt-1"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.6 }}
+                >
+                  Years Experience
+                </motion.p>
+              </div>
+              <div>
+                <motion.h3 
+                  className="text-5xl font-light text-white"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.7 }}
+                >
+                  +30
+                </motion.h3>
+                <motion.p 
+                  className="text-white/60 text-sm mt-1"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.8 }}
+                >
+                  Projects Completed
+                </motion.p>
+              </div>
+            </motion.div>
+            
+            {/* Main Heading */}
+            <motion.h1 
+              className="text-[120px] lg:text-[150px] font-bold leading-none -ml-2"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.8,
+                type: "spring",
+                stiffness: 50
+              }}
+            >
+              Hello
             </motion.h1>
             
             <motion.h2 
-              className="text-2xl md:text-3xl text-highlight font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.7 }}
+              className="text-xl text-white/80 font-light mb-8 ml-1"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.9 }}
             >
-              Java Developer & AWS Community Builder
+              — It's Sivachandran, an AWS Community Builder & Java Developer
             </motion.h2>
-            
-            <motion.p 
-              className="text-lg md:text-xl text-white/80 mb-8 max-w-2xl"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.9 }}
-            >
-              Passionate about building, optimizing, and innovating—crafting high-performance solutions that align with business goals. 
-              From robust applications to cloud-native transformations, I thrive on delivering tech that makes an impact.
-            </motion.p>
 
+            {/* Social links */}
             <motion.div 
-              className="flex flex-wrap gap-4 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.1 }}
-            >
-              <Button 
-                size="lg" 
-                className="bg-highlight hover:bg-highlight/90 text-white relative overflow-hidden group"
-              >
-                <span className="absolute inset-0 w-full h-full bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-                <a href="#contact" className="flex items-center gap-2 relative z-10">
-                  <Mail className="h-4 w-4" />
-                  Contact Me
-                </a>
-              </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg" 
-                className="border-white/20 hover:bg-white/5 relative overflow-hidden group"
-              >
-                <span className="absolute inset-0 w-full h-full bg-white/5 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
-                <a href="#about" className="flex items-center gap-2 relative z-10">
-                  Learn More
-                </a>
-              </Button>
-            </motion.div>
-            
-            <motion.div 
-              className="flex gap-6"
+              className="flex gap-6 mb-16"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1.3 }}
@@ -161,74 +170,59 @@ const HeroSection = () => {
                 </motion.a>
               ))}
             </motion.div>
-          </motion.div>
+            
+            {/* Scroll Down */}
+            <motion.div
+              className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center lg:left-8 lg:bottom-8 lg:transform-none"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.8, duration: 0.6 }}
+            >
+              <span className="text-white/60 text-sm mb-2">Scroll down</span>
+              <motion.div
+                animate={{ 
+                  y: [0, 5, 0],
+                }}
+                transition={{ 
+                  duration: 1.5, 
+                  repeat: Infinity,
+                  repeatType: "loop",
+                }}
+              >
+                <ArrowDown className="h-5 w-5 text-highlight" />
+              </motion.div>
+            </motion.div>
+
+            {/* Year */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 1.5 }}
+              className="hidden lg:block absolute left-8 bottom-8 text-white/40 text-sm"
+            >
+              © 2024
+            </motion.div>
+          </div>
           
+          {/* Right Side - Image */}
           <motion.div 
-            className="lg:col-span-5 order-first lg:order-last"
+            className="lg:col-span-5 z-10"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
           >
             <div className="relative">
-              {/* Animated rings around the profile image */}
-              <motion.div 
-                className="absolute inset-0 border-4 border-highlight/20 rounded-full"
-                animate={{ 
-                  scale: [1, 1.05, 1],
-                  opacity: [0.5, 0.8, 0.5]
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              />
-              <motion.div 
-                className="absolute -inset-3 border-2 border-highlight/10 rounded-full"
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.6, 0.3]
-                }}
-                transition={{ 
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  delay: 0.5
-                }}
-              />
-              
               {/* Profile Image */}
               <motion.div 
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-highlight relative z-10"
-                whileHover={{ scale: 1.05 }}
+                className="w-full h-auto"
+                whileHover={{ scale: 1.02 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 <img 
                   src="https://i.postimg.cc/KY0cQZW2/1735342491943.jpg" 
                   alt="Sivachandran Ariyaputhuri" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto rounded-lg grayscale contrast-125 brightness-110"
                 />
-              </motion.div>
-              
-              {/* QR Code */}
-              <motion.div 
-                className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.2, duration: 0.5 }}
-                whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                }}
-              >
-                <img 
-                  src="/lovable-uploads/69c46467-3d13-4800-8881-ff4bff2fb1a2.png" 
-                  alt="AWS Community Builder QR Code" 
-                  className="w-24 h-24"
-                />
-                <div className="text-center mt-1 text-xs text-black font-medium">
-                  AWS Profile
-                </div>
               </motion.div>
               
               {/* AWS Badge */}

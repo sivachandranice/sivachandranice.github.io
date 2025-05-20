@@ -8,8 +8,16 @@ import ExperienceSection from '@/components/sections/ExperienceSection';
 import SkillSection from '@/components/sections/SkillsSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
 import ContactSection from '@/components/sections/ContactSection';
+import { motion, useScroll, useSpring } from 'framer-motion';
 
 const Index = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   // Smooth scrolling effect for anchor links
   useEffect(() => {
     const handleAnchorClick = (e) => {
@@ -32,8 +40,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-dark-bg text-white overflow-hidden">
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-1 bg-highlight z-50 origin-left"
+        style={{ scaleX }}
+      />
       <Navbar />
-      <main className="pt-16">
+      <main>
         <HeroSection />
         <AboutSection />
         <ExperienceSection />

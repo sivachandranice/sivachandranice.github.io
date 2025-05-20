@@ -1,239 +1,212 @@
 
 import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Award, Check, Trophy, Medal, Star, BadgeCheck, Tablet } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { ExternalLink, Github, Award } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
-// Updated achievements with more impactful descriptions and organization
-const achievements = [
-  {
-    id: 1,
-    title: "LEAP Data Migration Success",
-    description: "Led the seamless LEAP data migration at OCBC with zero production issues, ensuring perfect data integrity and business continuity throughout the transition.",
-    icon: BadgeCheck,
-    organization: "OCBC",
-    category: "Technical Excellence"
-  },
-  {
-    id: 2,
-    title: "Best Team Award - LSQ2 Project",
-    description: "Recognized for exceptional leadership in developing critical flight operation system LSQ2, establishing new benchmarks in aviation technology.",
-    icon: Trophy,
-    organization: "TATA CONSULTANCY SERVICES",
-    date: "07/2021",
-    category: "Leadership"
-  },
-  {
-    id: 3,
-    title: "Innovation Showcased to Apple CEO",
-    description: "Developed revolutionary iPad-based flight operations solution for Singapore Airlines that transformed paper processes into digital workflows, personally showcased to Tim Cook during his visit to Singapore.",
-    icon: Tablet,
-    organization: "Singapore Airlines",
-    date: "12/2019",
-    category: "Innovation"
-  },
-  {
-    id: 4,
-    title: "Standing Ovation Award",
-    description: "Honored with prestigious Standing Ovation Award for delivering exceptional performance that significantly advanced business objectives.",
-    icon: Award,
-    organization: "SINGAPORE AIRLINES",
-    date: "05/2023",
-    category: "Excellence"
-  },
-  {
-    id: 5,
-    title: "Applause for Team Award",
-    description: "Earned recognition for pioneering ELB device solution using iPad technology, creating an innovative interface that transformed user workflows.",
-    icon: Award,
-    organization: "TATA CONSULTANCY SERVICES",
-    date: "10/2021",
-    category: "Innovation"
-  },
-  {
-    id: 6,
-    title: "Service and Commitment Award",
-    description: "Recognized for outstanding dedication and exceptional service quality that set new standards for client engagement and satisfaction.",
-    icon: Medal,
-    organization: "Newgen Software Private Limited",
-    date: "01/2016 - 12/2016",
-    category: "Service Excellence"
-  },
-  {
-    id: 7,
-    title: "Best Team Award",
-    description: "Acknowledged for extraordinary team collaboration that drove successful project outcomes and exceeded stakeholder expectations.",
-    icon: Trophy,
-    organization: "SINGAPORE AIRLINES",
-    date: "01/2014 - 12/2014",
-    category: "Teamwork"
-  },
-  {
-    id: 8,
-    title: "On the Spot Award",
-    description: "Honored for exceptional problem-solving abilities, delivering immediate solutions that prevented critical business disruptions.",
-    icon: Check,
-    organization: "SINGAPORE AIRLINES",
-    date: "01/2013 - 12/2013",
-    category: "Problem Solving"
-  }
-];
+const ProjectsSection = () => {
+  const achievementVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.1 * i,
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    })
+  };
 
-// Animation variants for elements
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" }
-  }
-};
-
-// Floating animation for icons
-const floatingIconVariants = {
-  animate: {
-    y: [0, -5, 0],
+  const floatingAnimation = {
+    y: [-5, 5, -5],
     transition: {
       duration: 3,
       repeat: Infinity,
-      repeatType: "mirror",
+      repeatType: "loop",
       ease: "easeInOut"
     }
-  }
-};
-
-const ProjectsSection = () => {
-  // Group achievements by category for better organization
-  const achievementCategories = achievements.reduce((categories, achievement) => {
-    const { category } = achievement;
-    if (!categories[category]) {
-      categories[category] = [];
-    }
-    categories[category].push(achievement);
-    return categories;
-  }, {});
+  };
 
   return (
     <section id="projects" className="py-20 relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-dark-bg to-black/60 z-0" />
-      
-      <motion.div 
-        className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-highlight/5 blur-3xl"
-        animate={{ 
-          scale: [1, 1.2, 1],
-          opacity: [0.2, 0.4, 0.2],
-        }}
-        transition={{ duration: 12, repeat: Infinity, repeatType: "reverse" }}
-      />
-      
-      <motion.div 
-        className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-highlight/5 blur-3xl"
-        animate={{ 
-          scale: [1, 1.3, 1],
-          opacity: [0.15, 0.3, 0.15],
-        }}
-        transition={{ duration: 10, delay: 2, repeat: Infinity, repeatType: "reverse" }}
-      />
+      {/* Background Elements */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <motion.div
+          className="absolute top-40 right-[5%] w-64 h-64 rounded-full bg-highlight/5 blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-[10%] w-80 h-80 rounded-full bg-highlight/10 blur-3xl"
+          animate={{
+            scale: [1, 1.3, 1],
+            opacity: [0.1, 0.3, 0.1],
+          }}
+          transition={{
+            duration: 13,
+            repeat: Infinity,
+            repeatType: "reverse",
+            delay: 1
+          }}
+        />
+      </div>
 
-      <div className="container px-4 mx-auto relative z-10">
-        <motion.div 
-          className="text-center mb-16"
+      <div className="container z-10 relative">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
-          <motion.div
-            initial={{ width: "0%" }}
-            whileInView={{ width: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeInOut" }}
-            className="h-px bg-gradient-to-r from-transparent via-highlight/50 to-transparent mx-auto mb-6 max-w-[100px]"
-          />
-          
-          <h2 className="section-heading mb-4 text-center inline-block">Achievements & Recognition</h2>
-          
-          <motion.div
-            initial={{ width: "0%" }}
-            whileInView={{ width: "100%" }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
-            className="h-px bg-gradient-to-r from-transparent via-highlight/50 to-transparent mx-auto mb-6 max-w-[100px]"
-          />
-          
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            A track record of excellence and innovation recognized by industry leaders and organizations.
-          </p>
+          <h2 className="section-heading text-center mb-16">Projects & Achievements</h2>
         </motion.div>
-        
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10"
-        >
-          {achievements.map((achievement) => (
-            <motion.div key={achievement.id} variants={itemVariants}>
-              <Card 
-                className="bg-dark-card/80 backdrop-blur-sm border-dark-border hover:border-highlight transition-all duration-500 h-full overflow-hidden group"
-              >
-                <CardContent className="p-6 flex flex-col h-full relative">
-                  {/* Glowing effect on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-highlight/0 to-highlight/0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10" />
-                  
-                  {/* Category badge */}
-                  <Badge className="absolute top-2 right-2 bg-highlight/20 text-highlight border-none">
-                    {achievement.category}
-                  </Badge>
-                  
-                  <div className="flex items-start gap-4">
-                    <motion.div 
-                      className="w-12 h-12 rounded-full bg-highlight/10 flex items-center justify-center flex-shrink-0 group-hover:bg-highlight/20 transition-all duration-500"
-                      variants={floatingIconVariants}
-                      animate="animate"
-                    >
-                      <achievement.icon className="h-6 w-6 text-highlight" />
-                    </motion.div>
-                    
-                    <div>
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-highlight transition-colors duration-300">
-                        {achievement.title}
-                      </h3>
-                      
-                      <p className="text-white/70 mb-4">{achievement.description}</p>
-                      
-                      <div className="mt-auto flex flex-col pt-3 border-t border-white/10">
-                        {achievement.organization && (
-                          <span className="text-sm font-medium text-highlight/90">
-                            {achievement.organization}
-                          </span>
-                        )}
-                        {achievement.date && (
-                          <span className="text-xs text-white/50 mt-1">
-                            {achievement.date}
-                          </span>
-                        )}
-                      </div>
-                    </div>
+
+        <div className="space-y-24">
+          {/* Projects Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="mb-20"
+          >
+            <h3 className="text-2xl font-semibold mb-8 text-center text-gradient">Featured Projects</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[
+                {
+                  title: "Cloud Migration Framework",
+                  description: "Developed a comprehensive framework for migrating on-premises applications to AWS cloud, resulting in 40% reduction in migration time and significant cost savings.",
+                  tags: ["AWS", "Java", "Terraform", "DevOps"],
+                  link: "#",
+                  github: "#"
+                },
+                {
+                  title: "Flight Operations Digitalization",
+                  description: "Led the development of an iPad application that transformed Singapore Airlines' flight operations from paper-based to digital workflows, enhancing efficiency and reducing environmental impact.",
+                  tags: ["Java", "Spring Boot", "AWS", "iOS"],
+                  link: "#",
+                  github: "#"
+                },
+              ].map((project, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-dark-card p-8 rounded-lg border border-dark-border hover:border-highlight/20 transition-all overflow-hidden group relative"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  whileHover={{ y: -5 }}
+                >
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-highlight/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  />
+                  <h4 className="text-xl font-bold mb-3 text-gradient">{project.title}</h4>
+                  <p className="text-white/70 mb-6">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {project.tags.map((tag) => (
+                      <span key={tag} className="text-xs bg-white/10 text-white/80 px-3 py-1 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
                   </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </motion.div>
+                  <div className="flex gap-4">
+                    <Button variant="ghost" size="sm" className="flex items-center gap-2 hover:text-highlight group-hover:text-highlight/80">
+                      <ExternalLink className="w-4 h-4" />
+                      <span>Live Demo</span>
+                    </Button>
+                    <Button variant="ghost" size="sm" className="flex items-center gap-2 hover:text-highlight group-hover:text-highlight/80">
+                      <Github className="w-4 h-4" />
+                      <span>Source Code</span>
+                    </Button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Achievements Section */}
+          <div className="pt-16">
+            <motion.h3 
+              className="text-2xl font-semibold mb-12 text-center text-gradient"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.7 }}
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              Achievements & Recognition
+            </motion.h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  icon: <Award className="h-8 w-8 text-highlight" />,
+                  category: "Apple CEO Showcase",
+                  title: "Flight Operations App for Singapore Airlines",
+                  description: "Showcased our iPad application to Tim Cook when he visited Singapore Airlines, demonstrating how our solution digitalized flight operations from paper forms to a seamless digital process.",
+                  gradient: "from-orange-500/20 to-red-600/5"
+                },
+                {
+                  icon: <Award className="h-8 w-8 text-highlight" />,
+                  category: "Community Recognition",
+                  title: "AWS Community Builder",
+                  description: "Selected as an AWS Community Builder for contributions to cloud computing knowledge sharing and community support.",
+                  gradient: "from-blue-500/20 to-purple-600/5"
+                },
+                {
+                  icon: <Award className="h-8 w-8 text-highlight" />,
+                  category: "Industry Impact",
+                  title: "Digital Transformation Award",
+                  description: "Received recognition for leading digital transformation initiatives that significantly improved operational efficiency.",
+                  gradient: "from-green-500/20 to-teal-600/5"
+                }
+              ].map((achievement, index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.1 }}
+                  variants={achievementVariants}
+                  className={cn(
+                    "bg-dark-card rounded-lg p-8 border border-dark-border hover:border-highlight/30",
+                    "transition-all duration-300 group relative overflow-hidden"
+                  )}
+                  whileHover={{ y: -5 }}
+                >
+                  <div className={cn(
+                    "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                    achievement.gradient
+                  )} />
+                  
+                  <motion.div animate={floatingAnimation} className="mb-6">
+                    {achievement.icon}
+                  </motion.div>
+                  
+                  <span className="text-xs font-medium text-highlight/80 bg-highlight/10 px-3 py-1 rounded-full inline-block mb-4">
+                    {achievement.category}
+                  </span>
+                  
+                  <h4 className="text-xl font-bold mb-3 group-hover:text-gradient transition-colors duration-300">
+                    {achievement.title}
+                  </h4>
+                  
+                  <p className="text-white/70">
+                    {achievement.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
