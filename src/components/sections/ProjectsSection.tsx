@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Award, Check, Trophy, Medal, Star, BadgeCheck } from 'lucide-react';
+import { Award, Check, Trophy, Medal, Star, BadgeCheck, Tablet } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 // Updated achievements with more impactful descriptions and organization
@@ -26,10 +26,10 @@ const achievements = [
   },
   {
     id: 3,
-    title: "Application Showcased to Apple CEO",
-    description: "Designed innovative solution officially acknowledged by Apple CEO Tim Cook on his social media, representing breakthrough user experience design.",
-    icon: Star,
-    organization: "Apple Inc.",
+    title: "Innovation Showcased to Apple CEO",
+    description: "Developed revolutionary iPad-based flight operations solution for Singapore Airlines that transformed paper processes into digital workflows, personally showcased to Tim Cook during his visit to Singapore.",
+    icon: Tablet,
+    organization: "Singapore Airlines",
     date: "12/2019",
     category: "Innovation"
   },
@@ -86,17 +86,30 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
+      staggerChildren: 0.15
     }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 }
+    transition: { duration: 0.6, ease: "easeOut" }
+  }
+};
+
+// Floating animation for icons
+const floatingIconVariants = {
+  animate: {
+    y: [0, -5, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      repeatType: "mirror",
+      ease: "easeInOut"
+    }
   }
 };
 
@@ -112,35 +125,88 @@ const ProjectsSection = () => {
   }, {});
 
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-dark-bg to-black/40">
-      <div className="container px-4 mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="section-heading mb-3 text-center">Achievements & Recognition</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">A track record of excellence and innovation recognized by industry leaders and organizations.</p>
-        </div>
+    <section id="projects" className="py-20 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-dark-bg to-black/60 z-0" />
+      
+      <motion.div 
+        className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-highlight/5 blur-3xl"
+        animate={{ 
+          scale: [1, 1.2, 1],
+          opacity: [0.2, 0.4, 0.2],
+        }}
+        transition={{ duration: 12, repeat: Infinity, repeatType: "reverse" }}
+      />
+      
+      <motion.div 
+        className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full bg-highlight/5 blur-3xl"
+        animate={{ 
+          scale: [1, 1.3, 1],
+          opacity: [0.15, 0.3, 0.15],
+        }}
+        transition={{ duration: 10, delay: 2, repeat: Infinity, repeatType: "reverse" }}
+      />
+
+      <div className="container px-4 mx-auto relative z-10">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <motion.div
+            initial={{ width: "0%" }}
+            whileInView={{ width: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeInOut" }}
+            className="h-px bg-gradient-to-r from-transparent via-highlight/50 to-transparent mx-auto mb-6 max-w-[100px]"
+          />
+          
+          <h2 className="section-heading mb-4 text-center inline-block">Achievements & Recognition</h2>
+          
+          <motion.div
+            initial={{ width: "0%" }}
+            whileInView={{ width: "100%" }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeInOut", delay: 0.3 }}
+            className="h-px bg-gradient-to-r from-transparent via-highlight/50 to-transparent mx-auto mb-6 max-w-[100px]"
+          />
+          
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            A track record of excellence and innovation recognized by industry leaders and organizations.
+          </p>
+        </motion.div>
         
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10"
         >
           {achievements.map((achievement) => (
             <motion.div key={achievement.id} variants={itemVariants}>
               <Card 
-                className="bg-dark-card border-dark-border hover:border-highlight transition-all duration-300 h-full overflow-hidden group"
+                className="bg-dark-card/80 backdrop-blur-sm border-dark-border hover:border-highlight transition-all duration-500 h-full overflow-hidden group"
               >
                 <CardContent className="p-6 flex flex-col h-full relative">
+                  {/* Glowing effect on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-highlight/0 to-highlight/0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 -z-10" />
+                  
                   {/* Category badge */}
                   <Badge className="absolute top-2 right-2 bg-highlight/20 text-highlight border-none">
                     {achievement.category}
                   </Badge>
                   
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-highlight/10 flex items-center justify-center flex-shrink-0 group-hover:bg-highlight/20 transition-all duration-300">
+                    <motion.div 
+                      className="w-12 h-12 rounded-full bg-highlight/10 flex items-center justify-center flex-shrink-0 group-hover:bg-highlight/20 transition-all duration-500"
+                      variants={floatingIconVariants}
+                      animate="animate"
+                    >
                       <achievement.icon className="h-6 w-6 text-highlight" />
-                    </div>
+                    </motion.div>
                     
                     <div>
                       <h3 className="text-xl font-bold text-white mb-2 group-hover:text-highlight transition-colors duration-300">
@@ -149,9 +215,9 @@ const ProjectsSection = () => {
                       
                       <p className="text-white/70 mb-4">{achievement.description}</p>
                       
-                      <div className="mt-auto flex flex-col pt-2 border-t border-white/10">
+                      <div className="mt-auto flex flex-col pt-3 border-t border-white/10">
                         {achievement.organization && (
-                          <span className="text-sm font-medium text-highlight">
+                          <span className="text-sm font-medium text-highlight/90">
                             {achievement.organization}
                           </span>
                         )}
