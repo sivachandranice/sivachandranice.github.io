@@ -204,7 +204,7 @@ const HeroSection = () => {
             </motion.div>
           </div>
           
-          {/* Right Side - Image */}
+          {/* Right Side - Image with MacBook frame */}
           <motion.div 
             className="lg:col-span-5 z-10"
             initial={{ opacity: 0, scale: 0.95 }}
@@ -212,17 +212,34 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="relative">
-              {/* Profile Image */}
+              {/* Metallic Silver MacBook Frame */}
               <motion.div 
-                className="w-full h-auto"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
+                className="relative w-full h-auto"
+                whileHover={{ 
+                  scale: 1.02,
+                  transition: { type: "spring", stiffness: 300 }
+                }}
               >
-                <img 
-                  src="https://i.postimg.cc/KY0cQZW2/1735342491943.jpg" 
-                  alt="Sivachandran Ariyaputhuri" 
-                  className="w-full h-auto rounded-lg grayscale contrast-125 brightness-110"
-                />
+                {/* MacBook Frame */}
+                <div className="relative w-full h-auto perspective-1000">
+                  {/* MacBook Body */}
+                  <div className="relative p-6 pt-8 pb-12 bg-gradient-to-b from-[#9F9EA1] to-[#8A898C] rounded-xl shadow-2xl overflow-hidden">
+                    {/* Screen Bezel */}
+                    <div className="relative rounded-lg bg-[#222222] p-2 shadow-inner">
+                      {/* Screen Content - Retain image in color */}
+                      <div className="relative overflow-hidden rounded-md aspect-ratio-16/9">
+                        <img 
+                          src="https://i.postimg.cc/KY0cQZW2/1735342491943.jpg" 
+                          alt="Sivachandran Ariyaputhuri" 
+                          className="w-full h-auto rounded-md object-cover"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* MacBook Bottom Indicator Light */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-orange-500/70 animate-pulse"></div>
+                  </div>
+                </div>
               </motion.div>
               
               {/* AWS Badge */}

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -19,12 +18,13 @@ const ProjectsSection = () => {
     })
   };
 
+  // Fix: Specify the correct type for repeatType
   const floatingAnimation = {
     y: [-5, 5, -5],
     transition: {
       duration: 3,
       repeat: Infinity,
-      repeatType: "loop",
+      repeatType: "loop" as const, // Fixed type error by using 'as const'
       ease: "easeInOut"
     }
   };
@@ -150,8 +150,8 @@ const ProjectsSection = () => {
                 {
                   icon: <Award className="h-8 w-8 text-highlight" />,
                   category: "Apple CEO Showcase",
-                  title: "Flight Operations App for Singapore Airlines",
-                  description: "Showcased our iPad application to Tim Cook when he visited Singapore Airlines, demonstrating how our solution digitalized flight operations from paper forms to a seamless digital process.",
+                  title: "iPad Flight Ops App",
+                  description: "Presented our revolutionary iPad app to Tim Cook during his Singapore Airlines visit, showcasing how we transformed paper-based flight operations into a seamless digital experience.",
                   gradient: "from-orange-500/20 to-red-600/5"
                 },
                 {

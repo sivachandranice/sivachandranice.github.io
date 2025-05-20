@@ -64,6 +64,14 @@
     animation: float 4s ease-in-out infinite;
   }
   
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .aspect-ratio-16\/9 {
+    aspect-ratio: 16/9;
+  }
+  
   @keyframes float {
     0% {
       transform: translateY(0px);
