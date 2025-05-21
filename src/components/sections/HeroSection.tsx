@@ -29,7 +29,7 @@ const itemVariants = {
   },
 };
 
-// Extra animation for floating elements - Fixed repeatType to use "mirror" string literal
+// Extra animation for floating elements
 const floatingVariants = {
   float: {
     y: [0, -15, 0],
@@ -236,13 +236,10 @@ const HeroSection = () => {
                     transition: { duration: 0.2 }
                   }}
                   variants={itemVariants}
-                  custom={index}
                 >
                   <social.icon className="h-6 w-6" />
                   <motion.span 
                     className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 text-xs bg-dark-card rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileHover={{ opacity: 1, y: 0 }}
                   >
                     {social.label}
                   </motion.span>
@@ -294,24 +291,17 @@ const HeroSection = () => {
               {/* Profile Image with enhanced hover effects and proper sizing */}
               <motion.div 
                 className="w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-highlight relative z-10"
-                variants={{
-                  float: {
-                    y: [0, -10, 0],
-                    transition: {
-                      duration: 5,
-                      repeat: Infinity,
-                      repeatType: "mirror" as const
-                    }
+                animate={{
+                  y: [0, -10, 0],
+                  transition: {
+                    duration: 5,
+                    repeat: Infinity,
+                    repeatType: "mirror" as const
                   }
                 }}
-                animate="float"
                 whileHover={{ 
                   scale: 1.05,
                   boxShadow: "0 0 30px rgba(245, 158, 11, 0.3)"
-                }}
-                transition={{ 
-                  type: "spring", 
-                  stiffness: 300 
                 }}
               >
                 <img 
@@ -321,39 +311,30 @@ const HeroSection = () => {
                 />
               </motion.div>
               
-              {/* QR Code with improved positioning */}
+              {/* QR Code with improved positioning - Fixed QR code display */}
               <motion.div 
-                className="absolute -right-6 md:-right-10 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg z-20"
+                className="absolute -right-10 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg z-20"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.2, duration: 0.5 }}
                 whileHover={{ 
                   scale: 1.1,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                  rotate: [0, -5, 0, 5, 0],
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}
+                animate={{
+                  y: [0, -8, 0],
                   transition: {
-                    rotate: {
-                      duration: 1,
-                      repeat: 0
-                    }
+                    duration: 6,
+                    repeat: Infinity,
+                    repeatType: "mirror" as const
                   }
                 }}
-                variants={{
-                  float: {
-                    y: [0, -8, 0],
-                    transition: {
-                      duration: 6,
-                      repeat: Infinity,
-                      repeatType: "mirror" as const
-                    }
-                  }
-                }}
-                animate="float"
               >
                 <img 
                   src="/lovable-uploads/69c46467-3d13-4800-8881-ff4bff2fb1a2.png" 
                   alt="AWS Community Builder QR Code" 
                   className="w-20 h-20"
+                  loading="eager"
                 />
                 <div className="text-center mt-1 text-xs text-black font-medium">
                   AWS Profile
@@ -370,17 +351,14 @@ const HeroSection = () => {
                   scale: 1.1,
                   backgroundColor: "rgba(255, 255, 255, 0.1)"
                 }}
-                variants={{
-                  float: {
-                    y: [0, -5, 0],
-                    transition: {
-                      duration: 4,
-                      repeat: Infinity,
-                      repeatType: "mirror" as const
-                    }
+                animate={{
+                  y: [0, -5, 0],
+                  transition: {
+                    duration: 4,
+                    repeat: Infinity,
+                    repeatType: "mirror" as const
                   }
                 }}
-                animate="float"
               >
                 <a 
                   href="https://community.aws/@sivachandranice" 
