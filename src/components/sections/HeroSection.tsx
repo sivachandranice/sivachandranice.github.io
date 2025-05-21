@@ -252,7 +252,7 @@ const HeroSection = () => {
           </motion.div>
           
           <motion.div 
-            className="lg:col-span-5 order-first lg:order-last"
+            className="lg:col-span-5 order-first lg:order-last flex justify-center"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ 
@@ -261,7 +261,7 @@ const HeroSection = () => {
               stiffness: 100
             }}
           >
-            <div className="relative">
+            <div className="relative w-64 h-64 md:w-80 md:h-80">
               {/* Enhanced animated rings with glow effect */}
               <motion.div 
                 className="absolute inset-0 border-4 border-highlight/20 rounded-full animate-glow"
@@ -292,7 +292,7 @@ const HeroSection = () => {
               
               {/* Profile Image with enhanced hover effects */}
               <motion.div 
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-highlight relative z-10"
+                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-highlight relative z-10 mx-auto"
                 variants={floatingVariants}
                 animate="float"
                 whileHover={{ 
@@ -311,9 +311,9 @@ const HeroSection = () => {
                 />
               </motion.div>
               
-              {/* QR Code with improved animation */}
+              {/* QR Code with improved animation and positioning */}
               <motion.div 
-                className="absolute -right-12 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg"
+                className="absolute -right-10 md:-right-16 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg z-20"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.2, duration: 0.5 }}
@@ -334,16 +334,16 @@ const HeroSection = () => {
                 <img 
                   src="/lovable-uploads/69c46467-3d13-4800-8881-ff4bff2fb1a2.png" 
                   alt="AWS Community Builder QR Code" 
-                  className="w-24 h-24"
+                  className="w-20 h-20 md:w-24 md:h-24"
                 />
                 <div className="text-center mt-1 text-xs text-black font-medium">
                   AWS Profile
                 </div>
               </motion.div>
               
-              {/* AWS Badge with enhanced animation */}
+              {/* AWS Badge with enhanced animation and positioning */}
               <motion.div 
-                className="absolute -bottom-4 -right-4 bg-dark-card glass-effect py-2 px-4 rounded-full shadow-lg"
+                className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-dark-card glass-effect py-2 px-4 rounded-full shadow-lg z-20"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4, duration: 0.5 }}
@@ -364,11 +364,11 @@ const HeroSection = () => {
                 </a>
               </motion.div>
               
-              {/* Add floating tech particles for enhanced visual appeal */}
+              {/* Add floating tech particles for enhanced visual appeal with z-index for proper layering */}
               {["AWS", "Java", "Spring", "Cloud", "DevOps"].map((tech, index) => (
                 <motion.div
                   key={tech}
-                  className="absolute bg-dark-card glass-effect px-2 py-1 rounded-lg text-xs text-white/80"
+                  className="absolute bg-dark-card glass-effect px-2 py-1 rounded-lg text-xs text-white/80 z-10"
                   initial={{ 
                     opacity: 0,
                     x: Math.random() * 100 - 50,

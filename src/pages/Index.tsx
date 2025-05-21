@@ -12,11 +12,11 @@ import ContactSection from '@/components/sections/ContactSection';
 const Index = () => {
   // Enhanced smooth scrolling effect for anchor links with offset
   useEffect(() => {
-    const handleAnchorClick = (e) => {
-      const target = e.target;
-      if (target.tagName === 'A' && target.getAttribute('href')?.startsWith('#')) {
-        const id = target.getAttribute('href');
-        const element = document.querySelector(id);
+    const handleAnchorClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.tagName === 'A' && (target as HTMLAnchorElement).getAttribute('href')?.startsWith('#')) {
+        const id = (target as HTMLAnchorElement).getAttribute('href');
+        const element = document.querySelector(id || '');
         if (element) {
           e.preventDefault();
           
@@ -49,13 +49,14 @@ const Index = () => {
       });
     }, { threshold: 0.1 });
 
-    document.querySelectorAll('section').forEach(section => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
       section.classList.add('opacity-0');
       observer.observe(section);
     });
 
     return () => {
-      document.querySelectorAll('section').forEach(section => {
+      sections.forEach(section => {
         observer.unobserve(section);
       });
     };
