@@ -36,7 +36,7 @@ const floatingVariants = {
     transition: {
       duration: 6,
       repeat: Infinity,
-      repeatType: "mirror" as const,
+      repeatType: "mirror",
     },
   },
 };
@@ -44,60 +44,46 @@ const floatingVariants = {
 const HeroSection = () => {
   return (
     <section id="home" className="min-h-screen flex items-center pt-0 relative overflow-hidden">
-      {/* Enhanced background elements */}
+      {/* Enhanced background elements - reduced blur for clarity */}
       <div className="absolute inset-0 z-0">
         <motion.div 
-          className="absolute top-20 right-[10%] w-64 h-64 rounded-full bg-highlight/5 blur-3xl"
+          className="absolute top-20 right-[10%] w-64 h-64 rounded-full bg-highlight/5 blur-2xl"
           animate={{ 
             scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3]
+            opacity: [0.2, 0.4, 0.2]
           }}
           transition={{ 
             duration: 8, 
             repeat: Infinity,
-            repeatType: "reverse" as const
+            repeatType: "reverse"
           }}
         />
         <motion.div 
-          className="absolute bottom-20 left-[15%] w-72 h-72 rounded-full bg-highlight/10 blur-3xl"
+          className="absolute bottom-20 left-[15%] w-72 h-72 rounded-full bg-highlight/10 blur-2xl"
           animate={{ 
             scale: [1, 1.3, 1],
-            opacity: [0.2, 0.4, 0.2]
+            opacity: [0.1, 0.3, 0.1]
           }}
           transition={{ 
             duration: 10, 
             repeat: Infinity,
-            repeatType: "reverse" as const,
+            repeatType: "reverse",
             delay: 1
           }}
         />
-        {/* Additional animated background elements for the wow effect */}
+        {/* Reduced number and intensity of background elements for professional look */}
         <motion.div 
-          className="absolute top-1/3 left-[20%] w-40 h-40 rounded-full bg-highlight/10 blur-2xl"
+          className="absolute top-1/3 left-[20%] w-40 h-40 rounded-full bg-highlight/5 blur-xl"
           animate={{ 
             scale: [1, 1.5, 1],
-            opacity: [0.1, 0.3, 0.1],
+            opacity: [0.05, 0.15, 0.05],
             x: [0, 50, 0],
           }}
           transition={{ 
             duration: 15, 
             repeat: Infinity,
-            repeatType: "reverse" as const,
+            repeatType: "reverse",
             delay: 2
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-1/4 right-[30%] w-56 h-56 rounded-full bg-highlight/8 blur-2xl"
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.25, 0.15],
-            y: [0, -30, 0],
-          }}
-          transition={{ 
-            duration: 12, 
-            repeat: Infinity,
-            repeatType: "reverse" as const,
-            delay: 3
           }}
         />
       </div>
@@ -260,48 +246,47 @@ const HeroSection = () => {
           >
             {/* Improved profile image container with proper alignment */}
             <div className="relative w-72 h-72 md:w-80 md:h-80 flex items-center justify-center">
-              {/* Enhanced animated rings with improved positioning and glow effect */}
+              {/* Enhanced animated rings with improved positioning and subtle glow effect */}
               <motion.div 
-                className="absolute inset-0 border-4 border-highlight/20 rounded-full animate-glow"
+                className="absolute inset-0 border-4 border-highlight/20 rounded-full"
                 animate={{ 
                   scale: [1, 1.05, 1],
-                  opacity: [0.5, 0.8, 0.5]
+                  opacity: [0.5, 0.7, 0.5]
                 }}
                 transition={{ 
-                  duration: 3,
+                  duration: 4,
                   repeat: Infinity,
-                  repeatType: "reverse" as const
+                  repeatType: "reverse"
                 }}
               />
               <motion.div 
                 className="absolute -inset-4 border-2 border-highlight/10 rounded-full"
                 animate={{ 
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.6, 0.3],
-                  rotate: [0, 10, 0]
+                  scale: [1, 1.05, 1],
+                  opacity: [0.3, 0.5, 0.3]
                 }}
                 transition={{ 
-                  duration: 4,
+                  duration: 5,
                   repeat: Infinity,
-                  repeatType: "reverse" as const,
+                  repeatType: "reverse",
                   delay: 0.5
                 }}
               />
               
-              {/* Profile Image with enhanced hover effects and proper sizing */}
+              {/* Profile Image with subtle hover effects and proper sizing */}
               <motion.div 
                 className="w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-highlight relative z-10"
                 animate={{
-                  y: [0, -10, 0],
+                  y: [0, -7, 0],
                   transition: {
-                    duration: 5,
+                    duration: 6,
                     repeat: Infinity,
-                    repeatType: "mirror" as const
+                    repeatType: "mirror"
                   }
                 }}
                 whileHover={{ 
-                  scale: 1.05,
-                  boxShadow: "0 0 30px rgba(245, 158, 11, 0.3)"
+                  scale: 1.03,
+                  boxShadow: "0 0 20px rgba(245, 158, 11, 0.3)"
                 }}
               >
                 <img 
@@ -311,29 +296,21 @@ const HeroSection = () => {
                 />
               </motion.div>
               
-              {/* QR Code with improved positioning - Fixed QR code display */}
+              {/* AWS Community Builder QR Code with improved positioning */}
               <motion.div 
-                className="absolute -right-10 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg z-20"
+                className="absolute -right-12 -top-2 bg-white p-3 rounded-lg shadow-lg z-20"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.2, duration: 0.5 }}
                 whileHover={{ 
-                  scale: 1.1,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
-                }}
-                animate={{
-                  y: [0, -8, 0],
-                  transition: {
-                    duration: 6,
-                    repeat: Infinity,
-                    repeatType: "mirror" as const
-                  }
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)"
                 }}
               >
                 <img 
-                  src="/lovable-uploads/69c46467-3d13-4800-8881-ff4bff2fb1a2.png" 
+                  src="/lovable-uploads/98014ba7-5aca-4355-8811-b62efd750b0d.png"
                   alt="AWS Community Builder QR Code" 
-                  className="w-20 h-20"
+                  className="w-24 h-24"
                   loading="eager"
                 />
                 <div className="text-center mt-1 text-xs text-black font-medium">
@@ -348,16 +325,8 @@ const HeroSection = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.4, duration: 0.5 }}
                 whileHover={{ 
-                  scale: 1.1,
+                  scale: 1.05,
                   backgroundColor: "rgba(255, 255, 255, 0.1)"
-                }}
-                animate={{
-                  y: [0, -5, 0],
-                  transition: {
-                    duration: 4,
-                    repeat: Infinity,
-                    repeatType: "mirror" as const
-                  }
                 }}
               >
                 <a 
@@ -370,30 +339,30 @@ const HeroSection = () => {
                 </a>
               </motion.div>
               
-              {/* Add floating tech particles with proper z-index and positioning */}
-              {["AWS", "Java", "Spring", "Cloud", "DevOps"].map((tech, index) => (
+              {/* Reduced number of floating tech particles with subtle animation */}
+              {["AWS", "Java", "Spring"].map((tech, index) => (
                 <motion.div
                   key={tech}
-                  className="absolute bg-dark-card glass-effect px-2 py-1 rounded-lg text-xs text-white/80 z-10"
+                  className="absolute bg-dark-card glass-effect px-2 py-1 rounded-lg text-xs text-white/80 z-5"
                   initial={{ 
                     opacity: 0,
-                    x: Math.random() * 100 - 50,
-                    y: Math.random() * 100 - 50,
+                    x: Math.random() * 80 - 40,
+                    y: Math.random() * 80 - 40,
                   }}
                   animate={{ 
-                    opacity: [0.4, 0.8, 0.4],
-                    x: Math.random() * 60 - 30,
-                    y: Math.random() * 60 - 30,
+                    opacity: [0.3, 0.6, 0.3],
+                    x: Math.random() * 40 - 20,
+                    y: Math.random() * 40 - 20,
                   }}
                   transition={{
-                    duration: 10 + index * 2,
+                    duration: 8 + index * 2,
                     repeat: Infinity,
-                    repeatType: "reverse" as const,
+                    repeatType: "reverse",
                     delay: index * 0.5,
                   }}
                   style={{
-                    left: `${Math.random() * 80 + 10}%`,
-                    top: `${Math.random() * 80 + 10}%`,
+                    left: `${(index * 30) + 20}%`,
+                    top: `${(index * 25) + 15}%`,
                   }}
                 >
                   {tech}
