@@ -29,14 +29,14 @@ const itemVariants = {
   },
 };
 
-// Extra animation for floating elements
+// Extra animation for floating elements - Fixed repeatType to use "mirror" string literal
 const floatingVariants = {
   float: {
     y: [0, -15, 0],
     transition: {
       duration: 6,
       repeat: Infinity,
-      repeatType: "mirror",
+      repeatType: "mirror" as const,
     },
   },
 };
@@ -55,7 +55,7 @@ const HeroSection = () => {
           transition={{ 
             duration: 8, 
             repeat: Infinity,
-            repeatType: "reverse" 
+            repeatType: "reverse" as const
           }}
         />
         <motion.div 
@@ -67,7 +67,7 @@ const HeroSection = () => {
           transition={{ 
             duration: 10, 
             repeat: Infinity,
-            repeatType: "reverse",
+            repeatType: "reverse" as const,
             delay: 1
           }}
         />
@@ -82,7 +82,7 @@ const HeroSection = () => {
           transition={{ 
             duration: 15, 
             repeat: Infinity,
-            repeatType: "reverse",
+            repeatType: "reverse" as const,
             delay: 2
           }}
         />
@@ -96,7 +96,7 @@ const HeroSection = () => {
           transition={{ 
             duration: 12, 
             repeat: Infinity,
-            repeatType: "reverse",
+            repeatType: "reverse" as const,
             delay: 3
           }}
         />
@@ -261,8 +261,9 @@ const HeroSection = () => {
               stiffness: 100
             }}
           >
-            <div className="relative w-64 h-64 md:w-80 md:h-80">
-              {/* Enhanced animated rings with glow effect */}
+            {/* Improved profile image container with proper alignment */}
+            <div className="relative w-72 h-72 md:w-80 md:h-80 flex items-center justify-center">
+              {/* Enhanced animated rings with improved positioning and glow effect */}
               <motion.div 
                 className="absolute inset-0 border-4 border-highlight/20 rounded-full animate-glow"
                 animate={{ 
@@ -272,11 +273,11 @@ const HeroSection = () => {
                 transition={{ 
                   duration: 3,
                   repeat: Infinity,
-                  repeatType: "reverse"
+                  repeatType: "reverse" as const
                 }}
               />
               <motion.div 
-                className="absolute -inset-3 border-2 border-highlight/10 rounded-full"
+                className="absolute -inset-4 border-2 border-highlight/10 rounded-full"
                 animate={{ 
                   scale: [1, 1.1, 1],
                   opacity: [0.3, 0.6, 0.3],
@@ -285,15 +286,24 @@ const HeroSection = () => {
                 transition={{ 
                   duration: 4,
                   repeat: Infinity,
-                  repeatType: "reverse",
+                  repeatType: "reverse" as const,
                   delay: 0.5
                 }}
               />
               
-              {/* Profile Image with enhanced hover effects */}
+              {/* Profile Image with enhanced hover effects and proper sizing */}
               <motion.div 
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-highlight relative z-10 mx-auto"
-                variants={floatingVariants}
+                className="w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-highlight relative z-10"
+                variants={{
+                  float: {
+                    y: [0, -10, 0],
+                    transition: {
+                      duration: 5,
+                      repeat: Infinity,
+                      repeatType: "mirror" as const
+                    }
+                  }
+                }}
                 animate="float"
                 whileHover={{ 
                   scale: 1.05,
@@ -311,9 +321,9 @@ const HeroSection = () => {
                 />
               </motion.div>
               
-              {/* QR Code with improved animation and positioning */}
+              {/* QR Code with improved positioning */}
               <motion.div 
-                className="absolute -right-10 md:-right-16 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg z-20"
+                className="absolute -right-6 md:-right-10 top-1/2 transform -translate-y-1/2 bg-white p-2 rounded-lg shadow-lg z-20"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.2, duration: 0.5 }}
@@ -328,20 +338,29 @@ const HeroSection = () => {
                     }
                   }
                 }}
-                variants={floatingVariants}
-                custom={1}
+                variants={{
+                  float: {
+                    y: [0, -8, 0],
+                    transition: {
+                      duration: 6,
+                      repeat: Infinity,
+                      repeatType: "mirror" as const
+                    }
+                  }
+                }}
+                animate="float"
               >
                 <img 
                   src="/lovable-uploads/69c46467-3d13-4800-8881-ff4bff2fb1a2.png" 
                   alt="AWS Community Builder QR Code" 
-                  className="w-20 h-20 md:w-24 md:h-24"
+                  className="w-20 h-20"
                 />
                 <div className="text-center mt-1 text-xs text-black font-medium">
                   AWS Profile
                 </div>
               </motion.div>
               
-              {/* AWS Badge with enhanced animation and positioning */}
+              {/* AWS Badge with improved positioning */}
               <motion.div 
                 className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-dark-card glass-effect py-2 px-4 rounded-full shadow-lg z-20"
                 initial={{ opacity: 0, y: 10 }}
@@ -351,8 +370,17 @@ const HeroSection = () => {
                   scale: 1.1,
                   backgroundColor: "rgba(255, 255, 255, 0.1)"
                 }}
-                variants={floatingVariants}
-                custom={2}
+                variants={{
+                  float: {
+                    y: [0, -5, 0],
+                    transition: {
+                      duration: 4,
+                      repeat: Infinity,
+                      repeatType: "mirror" as const
+                    }
+                  }
+                }}
+                animate="float"
               >
                 <a 
                   href="https://community.aws/@sivachandranice" 
@@ -364,7 +392,7 @@ const HeroSection = () => {
                 </a>
               </motion.div>
               
-              {/* Add floating tech particles for enhanced visual appeal with z-index for proper layering */}
+              {/* Add floating tech particles with proper z-index and positioning */}
               {["AWS", "Java", "Spring", "Cloud", "DevOps"].map((tech, index) => (
                 <motion.div
                   key={tech}
@@ -382,7 +410,7 @@ const HeroSection = () => {
                   transition={{
                     duration: 10 + index * 2,
                     repeat: Infinity,
-                    repeatType: "reverse",
+                    repeatType: "reverse" as const,
                     delay: index * 0.5,
                   }}
                   style={{

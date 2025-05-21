@@ -10,7 +10,7 @@ import ProjectsSection from '@/components/sections/ProjectsSection';
 import ContactSection from '@/components/sections/ContactSection';
 
 const Index = () => {
-  // Enhanced smooth scrolling effect for anchor links with offset
+  // Enhanced smooth scrolling effect for anchor links with proper offset
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -20,11 +20,12 @@ const Index = () => {
         if (element) {
           e.preventDefault();
           
-          // Get the height of the navbar (assuming 80px, adjust if different)
-          const navbarHeight = 80;
+          // Get the actual height of the navbar rather than a fixed value
+          const navbar = document.querySelector('nav');
+          const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 80;
           
           // Calculate the position with offset
-          const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+          const offsetTop = element.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20; // Added 20px extra padding
           
           window.scrollTo({
             top: offsetTop,

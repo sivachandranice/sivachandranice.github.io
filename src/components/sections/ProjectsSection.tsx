@@ -104,7 +104,7 @@ const itemVariants = {
   }
 };
 
-// Enhanced floating animation for icons
+// Enhanced floating animation for icons - fixed repeatType to use proper string literal
 const floatingIconVariants = {
   animate: {
     y: [0, -5, 0],
@@ -112,7 +112,7 @@ const floatingIconVariants = {
     transition: {
       duration: 3,
       repeat: Infinity,
-      repeatType: "mirror",
+      repeatType: "mirror" as const,
       ease: "easeInOut"
     }
   }
