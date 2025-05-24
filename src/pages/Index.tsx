@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
@@ -13,6 +13,7 @@ console.log('Index component loading...');
 
 const Index = () => {
   console.log('Index component rendering...');
+  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
   
   // Enhanced smooth scrolling effect for anchor links with proper offset
   useEffect(() => {
@@ -47,16 +48,15 @@ const Index = () => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        const sectionId = entry.target.id;
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-fade-in');
-          entry.target.classList.add('visible');
+          setVisibleSections(prev => new Set([...prev, sectionId]));
         }
       });
     }, { threshold: 0.1 });
 
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('section[id]');
     sections.forEach(section => {
-      section.classList.add('opacity-0');
       observer.observe(section);
     });
 
