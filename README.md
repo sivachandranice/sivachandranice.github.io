@@ -84,6 +84,8 @@ npm run lint
 
 This project is automatically deployed to GitHub Pages using GitHub Actions. Every push to the `main` branch triggers a new deployment.
 
+The site is available at: [https://sivachandranice.github.io/sivachandranice.github.io/](https://sivachandranice.github.io/sivachandranice.github.io/)
+
 ### Manual Deployment
 
 To deploy manually:
