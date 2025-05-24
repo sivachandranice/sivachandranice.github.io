@@ -1,40 +1,15 @@
 
 import React, { useEffect } from 'react';
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import HeroSection from '@/components/sections/HeroSection';
+import AboutSection from '@/components/sections/AboutSection';
+import ExperienceSection from '@/components/sections/ExperienceSection';
+import SkillSection from '@/components/sections/SkillsSection';
+import ProjectsSection from '@/components/sections/ProjectsSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 console.log('Index component loading...');
-
-// Import components one by one to identify any problematic imports
-let Navbar, Footer, HeroSection, AboutSection, ExperienceSection, SkillSection, ProjectsSection, ContactSection;
-
-try {
-  console.log('Importing Navbar...');
-  Navbar = require('@/components/layout/Navbar').default;
-  
-  console.log('Importing Footer...');
-  Footer = require('@/components/layout/Footer').default;
-  
-  console.log('Importing HeroSection...');
-  HeroSection = require('@/components/sections/HeroSection').default;
-  
-  console.log('Importing AboutSection...');
-  AboutSection = require('@/components/sections/AboutSection').default;
-  
-  console.log('Importing ExperienceSection...');
-  ExperienceSection = require('@/components/sections/ExperienceSection').default;
-  
-  console.log('Importing SkillSection...');
-  SkillSection = require('@/components/sections/SkillsSection').default;
-  
-  console.log('Importing ProjectsSection...');
-  ProjectsSection = require('@/components/sections/ProjectsSection').default;
-  
-  console.log('Importing ContactSection...');
-  ContactSection = require('@/components/sections/ContactSection').default;
-  
-  console.log('All imports successful!');
-} catch (error) {
-  console.error('Import error:', error);
-}
 
 const Index = () => {
   console.log('Index component rendering...');
@@ -91,11 +66,6 @@ const Index = () => {
       });
     };
   }, []);
-
-  if (!Navbar || !Footer || !HeroSection || !AboutSection || !ExperienceSection || !SkillSection || !ProjectsSection || !ContactSection) {
-    console.error('Some components failed to load');
-    return <div>Loading components...</div>;
-  }
 
   return (
     <div className="min-h-screen bg-dark-bg text-white overflow-hidden">
