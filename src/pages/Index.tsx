@@ -44,19 +44,23 @@ const Index = () => {
     return () => document.removeEventListener('click', handleAnchorClick);
   }, []);
 
-  // Add intersection observer to detect when sections are visible
+  // Add intersection observer to detect when sections are visible and add animations
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         const sectionId = entry.target.id;
         if (entry.isIntersecting) {
           setVisibleSections(prev => new Set([...prev, sectionId]));
+          // Add the animation classes directly to the DOM element
+          entry.target.classList.add('animate-fade-in', 'visible');
         }
       });
     }, { threshold: 0.1 });
 
     const sections = document.querySelectorAll('section[id]');
     sections.forEach(section => {
+      // Initialize sections as invisible for animation
+      section.classList.add('opacity-0');
       observer.observe(section);
     });
 
