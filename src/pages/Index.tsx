@@ -1,20 +1,15 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/sections/HeroSection';
 import AboutSection from '@/components/sections/AboutSection';
 import ExperienceSection from '@/components/sections/ExperienceSection';
-import SkillsSection from '@/components/sections/SkillsSection';
+import SkillSection from '@/components/sections/SkillsSection';
 import ProjectsSection from '@/components/sections/ProjectsSection';
 import ContactSection from '@/components/sections/ContactSection';
 
-console.log('Index component loading...');
-
 const Index = () => {
-  console.log('Index component rendering...');
-  const [visibleSections, setVisibleSections] = useState<Set<string>>(new Set());
-  
   // Enhanced smooth scrolling effect for anchor links with proper offset
   useEffect(() => {
     const handleAnchorClick = (e: MouseEvent) => {
@@ -44,22 +39,19 @@ const Index = () => {
     return () => document.removeEventListener('click', handleAnchorClick);
   }, []);
 
-  // Add intersection observer to detect when sections are visible and add animations
+  // Add intersection observer to detect when sections are visible
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        const sectionId = entry.target.id;
         if (entry.isIntersecting) {
-          setVisibleSections(prev => new Set([...prev, sectionId]));
-          // Add the animation classes directly to the DOM element
-          entry.target.classList.add('animate-fade-in', 'visible');
+          entry.target.classList.add('animate-fade-in');
+          entry.target.classList.add('visible');
         }
       });
     }, { threshold: 0.1 });
 
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('section');
     sections.forEach(section => {
-      // Initialize sections as invisible for animation
       section.classList.add('opacity-0');
       observer.observe(section);
     });
@@ -78,7 +70,7 @@ const Index = () => {
         <HeroSection />
         <AboutSection />
         <ExperienceSection />
-        <SkillsSection />
+        <SkillSection />
         <ProjectsSection />
         <ContactSection />
       </main>
