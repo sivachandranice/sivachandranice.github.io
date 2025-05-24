@@ -72,7 +72,7 @@ npm run dev
 npm run build
 ```
 
-The built files will be in the `dist` directory.
+The built files will be in the `docs` directory.
 
 ### Linting
 
@@ -82,21 +82,33 @@ npm run lint
 
 ## 📦 Deployment
 
-This project is automatically deployed to GitHub Pages using GitHub Actions. Every push to the `main` branch triggers a new deployment.
+This project is configured for GitHub Pages deployment from the main branch.
 
-The site is available at: [https://sivachandranice.github.io/sivachandranice.github.io/](https://sivachandranice.github.io/sivachandranice.github.io/)
+### GitHub Pages Setup
 
-### Manual Deployment
+1. Go to your repository settings on GitHub
+2. Navigate to "Pages" in the left sidebar
+3. Under "Source", select "Deploy from a branch"
+4. Choose "main" branch and "/docs" folder
+5. Click "Save"
 
-To deploy manually:
+### Manual Deployment Steps
 
-1. Build the project:
+1. Build the project locally:
 ```bash
 npm run build
 ```
 
-2. The `dist` folder contains the production build
-3. Deploy the contents of `dist` to your hosting service
+2. Commit and push the generated `docs` folder to the main branch:
+```bash
+git add docs/
+git commit -m "Build for GitHub Pages"
+git push origin main
+```
+
+3. GitHub will automatically deploy from the `docs` folder
+
+The site will be available at: [https://sivachandranice.github.io/sivachandranice.github.io/](https://sivachandranice.github.io/sivachandranice.github.io/)
 
 ## 🤝 Contributing
 
