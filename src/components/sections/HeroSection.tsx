@@ -3,6 +3,7 @@ import React from 'react';
 import { Github, Linkedin, Mail, QrCode } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
+import profileImage from '@/assets/profile.jpg';
 
 // Animation variants for staggered elements
 const containerVariants = {
@@ -290,7 +291,7 @@ const HeroSection = () => {
                 }}
               >
                 <img 
-                  src="https://i.postimg.cc/KY0cQZW2/1735342491943.jpg" 
+                  src={profileImage} 
                   alt="Sivachandran Ariyaputhuri" 
                   className="w-full h-full object-cover"
                 />

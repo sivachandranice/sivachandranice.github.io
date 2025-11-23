@@ -11,11 +11,11 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
           <div>
             <p className="text-lg text-white/80 mb-6">
-              With over 12 years of experience in the IT industry, I specialize in product development, testing, business process improvement, and full-cycle application development. My passion lies in creating scalable solutions that align perfectly with business objectives.
+              With over 13 years of experience in the IT industry, I specialize in product development, testing, business process improvement, and full-cycle application development. My passion lies in creating scalable solutions that align perfectly with business objectives.
             </p>
             
             <p className="text-lg text-white/80 mb-6">
-              As an AWS Community Builder, I continuously explore cloud technologies to enhance my skill set and deliver innovative solutions. My technical foundation in Java development has allowed me to build robust applications across various domains.
+              As an AWS Community Builder, I continuously explore cloud technologies to enhance my skill set and deliver innovative solutions. Currently, I'm working on AI initiatives using Spring AI, leveraging cutting-edge artificial intelligence capabilities to build intelligent applications. My technical foundation in Java development has allowed me to build robust applications across various domains.
             </p>
             
             <p className="text-lg text-white/80">
