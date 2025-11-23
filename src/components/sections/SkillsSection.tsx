@@ -10,7 +10,7 @@ const skillCategories = [
   {
     id: 2,
     category: "Frameworks",
-    skills: ["Struts", "Spring", "Spring Boot", "Spring AI", "Camunda"]
+    skills: ["Struts", "Spring", "Spring Boot", "Camunda"]
   },
   {
     id: 3,
@@ -31,6 +31,11 @@ const skillCategories = [
     id: 6,
     category: "RPA",
     skills: ["Automation Anywhere"]
+  },
+  {
+    id: 7,
+    category: "AI",
+    skills: ["Spring AI"]
   }
 ];
 
