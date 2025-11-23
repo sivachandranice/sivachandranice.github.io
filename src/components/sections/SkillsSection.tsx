@@ -10,7 +10,7 @@ const skillCategories = [
   {
     id: 2,
     category: "Frameworks",
-    skills: ["Struts", "Spring", "Spring Boot", "Camunda"]
+    skills: ["Struts", "Spring", "Spring Boot", "Spring AI", "Camunda"]
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const SkillSection = () => {
     <section id="skills" className="bg-dark-card/50 py-20">
       <div className="container">
         <h2 className="section-heading">Technical Skills</h2>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
           {skillCategories.map((category) => (
             <div key={category.id} className="skill-card">
@@ -55,21 +55,21 @@ const SkillSection = () => {
             </div>
           ))}
         </div>
-        
+
         <div className="mt-12 bg-dark-bg p-6 rounded-lg border border-dark-border">
           <h3 className="text-xl font-semibold text-white mb-4">Professional Expertise</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {["Product Development", "Application Testing", "Business Process Improvement", 
-              "Full-Cycle Development", "Cloud Architecture", "Performance Optimization", 
+            {["Product Development", "Application Testing", "Business Process Improvement",
+              "Full-Cycle Development", "Cloud Architecture", "Performance Optimization",
               "System Integration", "Technical Documentation"].map((expertise, index) => (
-              <div 
-                key={index}
-                className="flex items-center gap-2 bg-dark-card/50 rounded-md p-3"
-              >
-                <div className="w-1.5 h-1.5 bg-highlight rounded-full"></div>
-                <span className="text-sm text-white/80">{expertise}</span>
-              </div>
-            ))}
+                <div
+                  key={index}
+                  className="flex items-center gap-2 bg-dark-card/50 rounded-md p-3"
+                >
+                  <div className="w-1.5 h-1.5 bg-highlight rounded-full"></div>
+                  <span className="text-sm text-white/80">{expertise}</span>
+                </div>
+              ))}
           </div>
         </div>
       </div>
