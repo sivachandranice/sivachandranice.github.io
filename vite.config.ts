@@ -4,9 +4,9 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
+// Use root base by default; GitHub Pages overrides this in its build command
 export default defineConfig(({ mode }) => ({
-  base: mode === 'production' ? '/sivachandranice.github.io/' : '/',
+  base: '/',
   server: {
     host: "::",
     port: 8080,
