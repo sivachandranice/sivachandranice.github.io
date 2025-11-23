@@ -20,14 +20,14 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
-      
+
       // Find the section that is currently in view
       const sections = document.querySelectorAll('section[id]');
-      
+
       sections.forEach((section) => {
         const sectionTop = section.getBoundingClientRect().top;
         const sectionId = section.getAttribute('id');
-        
+
         if (sectionTop < 100 && sectionTop >= -100 && sectionId) {
           setActiveSection(`#${sectionId}`);
         }
@@ -46,12 +46,12 @@ const Navbar = () => {
       <div className="container flex justify-between items-center">
         <div className="flex items-center">
           <a href="#" className="text-2xl font-bold text-white">
-            Siva<span className="text-highlight">chandran</span>
+            Sivachandran <span className="text-highlight">Ariyaputhuri</span>
           </a>
         </div>
-        
+
         {/* Mobile menu button */}
-        <button 
+        <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="md:hidden p-2 text-white"
         >
@@ -61,13 +61,13 @@ const Navbar = () => {
             <span className={`block h-0.5 w-full bg-white transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
           </div>
         </button>
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
           <ul className="flex space-x-8">
             {navItems.map((item) => (
               <li key={item.href}>
-                <a 
+                <a
                   href={item.href}
                   className={cn(
                     'text-sm font-medium transition-colors flex items-center gap-1',
@@ -82,7 +82,7 @@ const Navbar = () => {
           </ul>
         </nav>
       </div>
-      
+
       {/* Mobile Navigation */}
       <nav className={cn(
         "absolute top-full left-0 w-full bg-dark-bg/95 backdrop-blur-lg transition-all duration-300 overflow-hidden",
@@ -91,7 +91,7 @@ const Navbar = () => {
         <ul className="flex flex-col space-y-4 container">
           {navItems.map((item) => (
             <li key={item.href}>
-              <a 
+              <a
                 href={item.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={cn(
