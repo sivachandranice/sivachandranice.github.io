@@ -10,10 +10,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const App = () => {
-  const basename =
-    import.meta.env.PROD && window.location.hostname.includes("github.io")
-      ? "/sivachandranice.github.io"
-      : undefined;
+  const basename = undefined;
 
   return (
     <QueryClientProvider client={queryClient}>
